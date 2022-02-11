@@ -20,7 +20,7 @@ Run it from the cmd with this command using [qemu](https://www.qemu.org/download
 qemu-system-x86_64 -cdrom dist/x86_64/kernel.iso
 ```
 ## Clean up
-run this inside the docker environment. This cleans all solution files.
+Run this inside the docker environment. This cleans all solution files.
 ```
 make clean
 ```
