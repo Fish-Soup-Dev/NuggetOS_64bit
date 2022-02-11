@@ -1,5 +1,5 @@
 # NuggetOS_64bit
-https://img.shields.io/badge/<x86_64>-<architecture>-<BLUE>
+
 ## Setup
 First run this to create [docker](https://www.docker.com/products/docker-desktop) environment.
 ```
