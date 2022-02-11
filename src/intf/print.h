@@ -20,5 +20,7 @@ enum {
 };
 
 void clr_scr();
-void print_char(char c);
-void set_print_color(short f, short b);
+void print_c(char chr);
+void print_i(int num);
+void print_s(char* str);
+void set_print_color(unsigned char f, unsigned char b);

@@ -1,24 +1,23 @@
 #include "print.h"
-
-#include <stddef.h>
+#include "nug.h"
 
 // size of screen
-const static size_t NUM_COLS = 80;
-const static size_t NUM_ROWS = 25;
+const static unsigned int NUM_COLS = 80;
+const static unsigned int NUM_ROWS = 25;
 
 struct Char
 {
-    short character;
-    short color;
+    unsigned char character;
+    unsigned char color;
 };
 
 struct Char* buffer = (struct Char*) 0xb8000;
 unsigned int col = 0;
 unsigned int row = 0;
-short color = PRINT_COLOR_WHITE | PRINT_COLOR_BLACK << 4;
+unsigned char color = PRINT_COLOR_WHITE | PRINT_COLOR_BLACK << 4;
 
 // clear just one line
-void clr_line(unsigned int row)
+void clr_row(unsigned int row)
 {
     struct Char empty = (struct Char)
     {
@@ -37,8 +36,9 @@ void clr_scr()
 {
     for (unsigned int i = 0; i < NUM_ROWS; i++)
     {
-        clr_line(i);
+        clr_row(i);
     }
+    row = 0;
 }
 
 // shift the cursor to the new row
@@ -52,40 +52,65 @@ void print_nl()
         return;
     }
 
-    for (size_t row = 1; row < NUM_ROWS; row++)
+    for (unsigned int row = 1; row < NUM_ROWS; row++)
     {
-        for (size_t col = 0; col < NUM_COLS; col++)
+        for (unsigned int col = 0; col < NUM_COLS; col++)
         {
             struct Char character = buffer[col + NUM_COLS * row];
             buffer[col + NUM_COLS * (row - 1)] = character;
         }
     }
 
-    clr_line(NUM_COLS - 1);
+    clr_row(NUM_COLS - 1);
 }
 
-void print_char(char c)
+// add one char to the screen buffer
+void print_c(char chr)
 {
-    if (c == '\n')
+    if (chr == '\n')
     {
         print_nl();
         return;
     }
-    if(col > NUM_COLS)
+
+    if (col > NUM_COLS)
     {
         print_nl();
     }
 
     buffer[col + NUM_COLS * row] = (struct Char)
     {
-        character: (short)c,
+        character: (unsigned char) chr,
         color: color
     };
 
     col++;
 }
 
-void set_print_color(short f, short b)
+void print_i(int num)
 {
+    char buf[33];
+    print_s(itoa(num, buf, 10));
+}
 
+// just do the print_char but like alot
+void print_s(char* str)
+{
+    for (unsigned int i = 0; 1; i++)
+    {
+        char chr = (unsigned char)str[i];
+
+        if (chr == '\0')
+        {
+            return;
+        }
+
+        print_c(chr);
+    }
+}
+
+// change color of text
+void set_print_color(unsigned char f, unsigned char b)
+{
+    color = f + (b << 4);
 }
