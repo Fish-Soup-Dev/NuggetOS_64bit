@@ -3,7 +3,7 @@
 
 // size of screen
 const static unsigned int NUM_COLS = 80;
-const static unsigned int NUM_ROWS = 25;
+const static unsigned int NUM_ROWS = 26;
 
 struct Char
 {
@@ -39,9 +39,10 @@ void clr_scr()
         clr_row(i);
     }
     row = 0;
+    col = 0;
 }
 
-// shift the cursor to the new row
+// shift to the next row
 void print_nl()
 {
     col = 0;
@@ -107,6 +108,11 @@ void print_s(char* str)
 
         print_c(chr);
     }
+}
+
+void print_f(char* str, ...)
+{
+    
 }
 
 // change color of text
