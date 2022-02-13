@@ -1,6 +1,11 @@
 #pragma once
 
 #include "types.h"
+#include "cursor.h"
+#include "nug.h"
+
+#define NUM_COLS 80
+#define NUM_ROWS 25
 
 enum {
     PRINT_COLOR_BLACK = 0,

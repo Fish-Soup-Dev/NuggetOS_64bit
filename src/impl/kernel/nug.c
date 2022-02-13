@@ -10,6 +10,25 @@ uint32 abs(int32 value)
     return value;
 }
 
+uint32 digit_count(int num)
+{
+    if (num < 0)
+    {
+        return digit_count(-num) + 1;
+    }
+    if (num == 0)
+    {
+        return 1;
+    }
+    uint32 count = 0;
+    while (num > 0)
+    {
+        count++;
+        num = num / 10;
+    }
+    return count;
+}
+
 // Function to swap two numbers
 void swap(uint8 *x, uint8 *y)
 {

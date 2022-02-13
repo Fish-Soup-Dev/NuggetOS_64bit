@@ -1,9 +1,4 @@
 #include "print.h"
-#include "nug.h"
-
-// size of screen
-const uint16 NUM_COLS = 80;
-const uint16 NUM_ROWS = 25;
 
 struct Char
 {
@@ -16,13 +11,12 @@ uint16 col = 0;
 uint16 row = 0;
 uint8 color = PRINT_COLOR_WHITE | PRINT_COLOR_BLACK << 4;
 
-// clear just one line
 void clr_row(uint16 row)
 {
     struct Char empty = (struct Char)
     {
         character: ' ',
-        color: color
+        color: color,
     };
 
     for (uint16 col = 0; col < NUM_COLS; col++)
@@ -32,14 +26,11 @@ void clr_row(uint16 row)
 }
 
 // clear whole screen
-void clr_scr()
-{
+void clr_scr() {
     for (uint16 i = 0; i < NUM_ROWS; i++)
     {
         clr_row(i);
     }
-    row = 0;
-    col = 0;
 }
 
 // shift to the next row
@@ -62,7 +53,8 @@ void print_nl()
         }
     }
 
-    clr_row(NUM_COLS - 1);
+    clr_row(NUM_ROWS - 1);
+    move_cursor(col, row);
 }
 
 // add one char to the screen buffer
@@ -74,11 +66,11 @@ void print_c(uint8 chr)
         return;
     }
 
-    if (col > NUM_COLS - 1)
+    if (col > NUM_COLS)
     {
         print_nl();
     }
-
+    
     buffer[col + NUM_COLS * row] = (struct Char)
     {
         character: (uint8) chr,
@@ -86,11 +78,12 @@ void print_c(uint8 chr)
     };
 
     col++;
+    move_cursor(col, row);
 }
 
 void print_i(int32 num)
 {
-    uint8 buf[33];
+    uint8 buf[digit_count(num) + 1];
     print_s(itoa(num, buf, 10));
 }
 
