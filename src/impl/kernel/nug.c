@@ -1,6 +1,6 @@
 #include "nug.h"
 
-unsigned int abs(int value)
+uint32 abs(int32 value)
 {
     if (value < 0)
     {
@@ -11,13 +11,13 @@ unsigned int abs(int value)
 }
 
 // Function to swap two numbers
-void swap(char *x, char *y)
+void swap(uint8 *x, uint8 *y)
 {
-    char t = *x; *x = *y; *y = t;
+    uint8 t = *x; *x = *y; *y = t;
 }
  
 // Function to reverse `buffer[i…j]`
-char* reverse(char *buffer, int i, int j)
+uint8* reverse(uint8 *buffer, uint32 i, uint32 j)
 {
     while (i < j)
     {
@@ -28,7 +28,7 @@ char* reverse(char *buffer, int i, int j)
 }
  
 // Iterative function to implement `itoa()` function in C
-char* itoa(int value, char* buffer, int base)
+uint8* itoa(int32 value, uint8* buffer, uint16 base)
 {
     // invalid input
     if (base < 2 || base > 32)
@@ -37,9 +37,9 @@ char* itoa(int value, char* buffer, int base)
     }
  
     // consider the absolute value of the number
-    int n = abs(value);
+    uint32 n = abs(value);
  
-    int i = 0;
+    uint32 i = 0;
     while (n)
     {
         int r = n % base;
@@ -76,7 +76,7 @@ char* itoa(int value, char* buffer, int base)
     return reverse(buffer, 0, i - 1);
 }
 
-void sleep(int cycles_count)
+void sleep(uint32 cycles_count)
 {
     while (cycles_count-- > 0)
     {

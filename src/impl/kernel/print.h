@@ -1,5 +1,7 @@
 #pragma once
 
+#include "types.h"
+
 enum {
     PRINT_COLOR_BLACK = 0,
 	PRINT_COLOR_BLUE = 1,
@@ -20,7 +22,7 @@ enum {
 };
 
 void clr_scr();
-void print_c(char chr);
-void print_i(int num);
-void print_s(char* str);
-void set_print_color(unsigned char f, unsigned char b);
+void print_c(uint8 chr);
+void print_i(int32 num);
+void print_s(uint8* str);
+void set_print_color(uint8 f, uint8 b);

@@ -1,7 +1,7 @@
 #include "print.h"
-#include "beep.h"
+#include "types.h"
 
 void kernel_main()
 {
-    beep();
+    
 }

@@ -2,22 +2,22 @@
 #include "nug.h"
 
 // size of screen
-const static unsigned int NUM_COLS = 80;
-const static unsigned int NUM_ROWS = 25;
+const uint16 NUM_COLS = 80;
+const uint16 NUM_ROWS = 25;
 
 struct Char
 {
-    unsigned char character;
-    unsigned char color;
+    uint8 character;
+    uint8 color;
 };
 
 struct Char* buffer = (struct Char*) 0xb8000;
-unsigned int col = 0;
-unsigned int row = 0;
-unsigned char color = PRINT_COLOR_WHITE | PRINT_COLOR_BLACK << 4;
+uint16 col = 0;
+uint16 row = 0;
+uint8 color = PRINT_COLOR_WHITE | PRINT_COLOR_BLACK << 4;
 
 // clear just one line
-void clr_row(unsigned int row)
+void clr_row(uint16 row)
 {
     struct Char empty = (struct Char)
     {
@@ -25,7 +25,7 @@ void clr_row(unsigned int row)
         color: color
     };
 
-    for (unsigned int col = 0; col < NUM_COLS; col++)
+    for (uint16 col = 0; col < NUM_COLS; col++)
     {
         buffer[col + NUM_COLS * row] = empty;
     }
@@ -34,7 +34,7 @@ void clr_row(unsigned int row)
 // clear whole screen
 void clr_scr()
 {
-    for (unsigned int i = 0; i < NUM_ROWS; i++)
+    for (uint16 i = 0; i < NUM_ROWS; i++)
     {
         clr_row(i);
     }
@@ -53,9 +53,9 @@ void print_nl()
         return;
     }
 
-    for (unsigned int row = 1; row < NUM_ROWS; row++)
+    for (uint16 row = 1; row < NUM_ROWS; row++)
     {
-        for (unsigned int col = 0; col < NUM_COLS; col++)
+        for (uint16 col = 0; col < NUM_COLS; col++)
         {
             struct Char character = buffer[col + NUM_COLS * row];
             buffer[col + NUM_COLS * (row - 1)] = character;
@@ -66,7 +66,7 @@ void print_nl()
 }
 
 // add one char to the screen buffer
-void print_c(char chr)
+void print_c(uint8 chr)
 {
     if (chr == '\n')
     {
@@ -81,25 +81,25 @@ void print_c(char chr)
 
     buffer[col + NUM_COLS * row] = (struct Char)
     {
-        character: (unsigned char) chr,
+        character: (uint8) chr,
         color: color
     };
 
     col++;
 }
 
-void print_i(int num)
+void print_i(int32 num)
 {
-    char buf[33];
+    uint8 buf[33];
     print_s(itoa(num, buf, 10));
 }
 
 // just do the print_char but like alot
-void print_s(char* str)
+void print_s(uint8* str)
 {
-    for (unsigned int i = 0; 1; i++)
+    for (uint32 i = 0; 1; i++)
     {
-        char chr = (unsigned char)str[i];
+        uint8 chr = (uint8)str[i];
 
         if (chr == '\0')
         {
@@ -111,7 +111,7 @@ void print_s(char* str)
 }
 
 // change color of text
-void set_print_color(unsigned char f, unsigned char b)
+void set_print_color(uint8 f, uint8 b)
 {
     color = f + (b << 4);
 }
