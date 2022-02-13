@@ -17,7 +17,7 @@ make build-x86_64
 ## Running the iso in an emulator
 Run it from the cmd with this command using [qemu](https://www.qemu.org/download/)
 ```
-qemu-system-x86_64 -cdrom dist/x86_64/kernel.iso
+qemu-system-x86_64 -soundhw pcspk -cdrom dist/x86_64/kernel.iso
 ```
 ## Clean up
 Run this inside the docker environment. This cleans all solution files.

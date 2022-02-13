@@ -75,3 +75,11 @@ char* itoa(int value, char* buffer, int base)
     // reverse the string and return it
     return reverse(buffer, 0, i - 1);
 }
+
+void sleep(int cycles_count)
+{
+    while (cycles_count-- > 0)
+    {
+        asm volatile("pause");
+    }
+}
