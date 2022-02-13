@@ -1,4 +1,4 @@
-#include "nug.h"
+#include "utils.h"
 
 uint32 abs(int32 value)
 {
@@ -93,12 +93,4 @@ uint8* itoa(int32 value, uint8* buffer, uint16 base)
  
     // reverse the string and return it
     return reverse(buffer, 0, i - 1);
-}
-
-void sleep(uint32 cycles_count)
-{
-    while (cycles_count-- > 0)
-    {
-        asm volatile("pause");
-    }
 }

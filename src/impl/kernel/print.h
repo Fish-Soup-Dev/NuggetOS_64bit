@@ -2,7 +2,7 @@
 
 #include "types.h"
 #include "cursor.h"
-#include "nug.h"
+#include "utils.h"
 
 #define NUM_COLS 80
 #define NUM_ROWS 25
@@ -27,6 +27,8 @@ enum {
 };
 
 void clr_scr();
+void clr_col();
+void clr_row(uint16 row);
 void print_c(uint8 chr);
 void print_i(int32 num);
 void print_s(uint8* str);

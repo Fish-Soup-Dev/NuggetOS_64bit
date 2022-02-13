@@ -25,6 +25,21 @@ void clr_row(uint16 row)
     }
 }
 
+void clr_col()
+{
+    col--;
+
+    struct Char empty = (struct Char)
+    {
+        character: ' ',
+        color: color,
+    };
+
+    buffer[col + NUM_COLS * row] = empty;
+
+    move_cursor(col, row);
+}
+
 // clear whole screen
 void clr_scr() {
     for (uint16 i = 0; i < NUM_ROWS; i++)
