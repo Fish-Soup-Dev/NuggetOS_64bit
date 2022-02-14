@@ -1,15 +1,8 @@
 #include "nugget.h"
 #include "apps.h"
 
-void show_date_time();
-
-void kernel_main()
+void logo()
 {
-    enable_cursor(13, 15);
-
-    clr_scr();
-    sleep_init();
-
     set_print_color(PRINT_COLOR_GREEN, PRINT_COLOR_BLACK);
 
     print_s("  _   _                        _      ___  ____  \n");
@@ -20,6 +13,15 @@ void kernel_main()
     print_s("              |___/ |___/                        \n");
 
     set_print_color(PRINT_COLOR_WHITE, PRINT_COLOR_BLACK);
+}
+
+void kernel_main()
+{
+    enable_cursor(13, 15);
+
+    clr_scr();
+    sleep_init();
+    logo();
 
     char vendor_str[13];
     CPUID_vendor_string(vendor_str);
@@ -46,6 +48,14 @@ void kernel_main()
             {
                 clr_scr();
                 math();
+            
+                clr_scr();
+                print_s("comp>");
+            }
+            else if (ic_strcmp(str, "money simulator") == 0)
+            {
+                clr_scr();
+                moneygame();
 
                 clr_scr();
                 print_s("comp>");
@@ -55,6 +65,7 @@ void kernel_main()
                 set_print_color(PRINT_COLOR_YELLOW, PRINT_COLOR_BLACK);
                 print_s("\nclear: clears screen");
                 print_s("\nclac: opens calculator mode");
+                print_s("\nmoney simulator: opens money simulator game");
                 set_print_color(PRINT_COLOR_WHITE, PRINT_COLOR_BLACK);
                 print_s("\ncomp>");
             }

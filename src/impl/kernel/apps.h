@@ -3,3 +3,4 @@
 #include "nugget.h"
 
 void math();
+void moneygame();
