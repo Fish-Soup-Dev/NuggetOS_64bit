@@ -15,7 +15,7 @@ void math()
 
     while (1)
     {
-        if (input_str(str, max_len, false))
+        if (input_str(str, max_len, true))
         {
             if (ic_strcmp(str, "clear") == 0)
             {
@@ -27,7 +27,7 @@ void math()
             {
                 sleep(500000);
                 print_s("\nenter first number: ");
-                if (input_str(str, max_len, false))
+                if (input_str(str, max_len, true))
                 {
                     if (ic_strcmp(str, "ans") == 0)
                     {
@@ -40,7 +40,7 @@ void math()
                 }
                 sleep(500000);
                 print_s("\nenter second number: ");
-                if (input_str(str, max_len, false))
+                if (input_str(str, max_len, true))
                 {
                     if (ic_strcmp(str, "ans") == 0)
                     {
@@ -68,7 +68,7 @@ void math()
             {
                 sleep(500000);
                 print_s("\nenter first number: ");
-                if (input_str(str, max_len, false))
+                if (input_str(str, max_len, true))
                 {
                     if (ic_strcmp(str, "ans") == 0)
                     {
@@ -81,7 +81,7 @@ void math()
                 }
                 sleep(500000);
                 print_s("\nenter second number: ");
-                if (input_str(str, max_len, false))
+                if (input_str(str, max_len, true))
                 {
                     if (ic_strcmp(str, "ans") == 0)
                     {
@@ -109,7 +109,7 @@ void math()
             {
                 sleep(500000);
                 print_s("\nenter first number: ");
-                if (input_str(str, max_len, false))
+                if (input_str(str, max_len, true))
                 {
                     if (ic_strcmp(str, "ans") == 0)
                     {
@@ -122,7 +122,7 @@ void math()
                 }
                 sleep(500000);
                 print_s("\nenter second number: ");
-                if (input_str(str, max_len, false))
+                if (input_str(str, max_len, true))
                 {
                     if (ic_strcmp(str, "ans") == 0)
                     {
@@ -150,7 +150,7 @@ void math()
             {
                 sleep(500000);
                 print_s("\nenter first number: ");
-                if (input_str(str, max_len, false))
+                if (input_str(str, max_len, true))
                 {
                     if (ic_strcmp(str, "ans") == 0)
                     {
@@ -163,7 +163,7 @@ void math()
                 }
                 sleep(500000);
                 print_s("\nenter second number: ");
-                if (input_str(str, max_len, false))
+                if (input_str(str, max_len, true))
                 {
                     if (ic_strcmp(str, "ans") == 0)
                     {
@@ -191,7 +191,7 @@ void math()
             {
                 sleep(500000);
                 print_s("\nenter first number: ");
-                if (input_str(str, max_len, false))
+                if (input_str(str, max_len, true))
                 {
                     if (ic_strcmp(str, "ans") == 0)
                     {
@@ -204,7 +204,7 @@ void math()
                 }
                 sleep(500000);
                 print_s("\nenter second number: ");
-                if (input_str(str, max_len, false))
+                if (input_str(str, max_len, true))
                 {
                     if (ic_strcmp(str, "ans") == 0)
                     {
@@ -248,6 +248,7 @@ void math()
             {
                 set_print_color(PRINT_COLOR_RED, PRINT_COLOR_BLACK);
                 print_s("\nerror not valid command: ");
+                print_s(str);
                 set_print_color(PRINT_COLOR_WHITE, PRINT_COLOR_BLACK);
                 print_s("\ncalc>");
             }

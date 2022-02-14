@@ -42,15 +42,17 @@ void kernel_main()
             if (ic_strcmp(str, "clear") == 0)
             {
                 clr_scr();
-                print_s("comp>");
+                print_s("\ncomp>");
             }
             else if (ic_strcmp(str, "calc") == 0)
             {
-                clr_scr();
                 math();
-            
-                clr_scr();
-                print_s("comp>");
+                print_s("\ncomp>");
+            }
+            else if (ic_strcmp(str, "conv") == 0)
+            {
+                convert();
+                print_s("\ncomp>");
             }
             else if (ic_strcmp(str, "money simulator") == 0)
             {
@@ -58,13 +60,14 @@ void kernel_main()
                 moneygame();
 
                 clr_scr();
-                print_s("comp>");
+                print_s("\ncomp>");
             }
             else if (ic_strcmp(str, "help") == 0)
             {
                 set_print_color(PRINT_COLOR_YELLOW, PRINT_COLOR_BLACK);
                 print_s("\nclear: clears screen");
                 print_s("\nclac: opens calculator mode");
+                print_s("\nconv: opens convert mode");
                 print_s("\nmoney simulator: opens money simulator game");
                 set_print_color(PRINT_COLOR_WHITE, PRINT_COLOR_BLACK);
                 print_s("\ncomp>");
