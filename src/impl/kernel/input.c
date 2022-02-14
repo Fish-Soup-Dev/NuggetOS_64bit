@@ -1,12 +1,15 @@
 #include "input.h"
 
-uint8 get_input_keycode()
+uint8 get_input_keycode(boolean clock)
 {
     uint8 code = 0;
     while (!code)
     {
         sleep(10000);
-        show_date_time();
+        if (clock == true)
+        {
+            show_date_time();
+        }
         
         code = inb(KEYBOARD_PORT);
     }
@@ -14,7 +17,7 @@ uint8 get_input_keycode()
     return code;
 }
 
-boolean input_str(uint8* str, uint32 max_len)
+boolean input_str(uint8* str, uint32 max_len, boolean clock)
 {
     boolean capslock = false;
     boolean shift = false;
@@ -28,7 +31,7 @@ boolean input_str(uint8* str, uint32 max_len)
     uint32 pos = 0;
     while (true)
     {
-        uint8 c = get_input_keycode();
+        uint8 c = get_input_keycode(clock);
 
         if (c == last_keycode)
         {

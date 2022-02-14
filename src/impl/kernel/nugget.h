@@ -8,4 +8,4 @@
 #include "io.h"
 #include "utils.h"
 #include "cpuid.h"
-#include "cmostime.h"
+#include "time.h"

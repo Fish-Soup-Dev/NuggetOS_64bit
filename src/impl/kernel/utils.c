@@ -165,3 +165,56 @@ int32 memcmp(const void *v1, const void *v2, int32 n)
 
     return 0;
 }
+
+float powf(float num, float exp)
+{
+    float result;
+
+    while (exp != 0)
+    {
+        result *= num;
+        --exp;
+    }
+
+    return result;
+}
+
+int32 powi(int32 num, int32 exp)
+{
+    int32 result;
+
+    while (exp != 0)
+    {
+        result *= num;
+        --exp;
+    }
+
+    return result;
+}
+
+float atof(int8* str)
+{
+    int32 i,j,flag;
+    float val;
+    int8 c;
+    i=0;
+    j=0;
+    val=0;
+    flag=0;
+    while ((c = *(str+i))!='\0')
+    {
+//      if ((c<'0')||(c>'9')) return 0;
+        if (c!='.')
+        {
+            val =(val*10)+(c-'0');
+            if (flag == 1)
+            {
+                --j;
+            }
+        }
+        if (c=='.'){ if (flag == 1) return 0; flag=1;}
+        ++i;
+    }
+    val = val*powf(10,j);
+    return val;
+}
