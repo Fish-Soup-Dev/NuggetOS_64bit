@@ -238,7 +238,7 @@ void math()
                 print_s("\npow: rases the first number to the power of the second");
                 print_s("\nexit: exits calculator");
                 set_print_color(PRINT_COLOR_WHITE, PRINT_COLOR_BLACK);
-                print_s("\ncomp>");
+                print_s("\ncalc>");
             }
             else if (ic_strcmp(str, "exit") == 0)
             {

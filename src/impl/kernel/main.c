@@ -79,6 +79,7 @@ void kernel_main()
             }
         }
 
+        pprint_str(35, 24, "comp mode", PRINT_COLOR_LIGHT_GREEN, PRINT_COLOR_BLACK);
         show_date_time();
         sleep(500000);
     }
