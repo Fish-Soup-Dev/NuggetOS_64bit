@@ -1,8 +1,5 @@
 # NuggetOS_64bit
 
-<img src="/docs/screenshot1.png" alt="screenshot1"/>
-<img src="/docs/screenshot2.png" alt="screenshot2"/>
-
 ## Setup
 First run this to create [docker](https://www.docker.com/products/docker-desktop) environment.
 ```
