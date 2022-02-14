@@ -46,6 +46,8 @@ void clr_scr() {
     {
         clr_row(i);
     }
+    row = 0;
+    col = 0;
 }
 
 // shift to the next row

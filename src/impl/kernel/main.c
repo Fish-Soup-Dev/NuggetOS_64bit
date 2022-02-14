@@ -7,14 +7,45 @@ void kernel_main()
     clr_scr();
     sleep_init();
 
-    print_s("\n\nPlease enter your name: ");
+    set_print_color(PRINT_COLOR_GREEN, PRINT_COLOR_BLACK);
+
+    print_s("  _   _                        _      ___  ____  \n");
+    print_s(" | \\ | |_   _  __ _  __ _  ___| |_   / _ \\/ ___| \n");
+    print_s(" |  \\| | | | |/ _` |/ _` |/ _ \\ __| | | | \\___ \\ \n");
+    print_s(" | |\\  | |_| | (_| | (_| |  __/ |_  | |_| |___) |\n");
+    print_s(" |_| \\_|\\__,_|\\__, |\\__, |\\___|\\__|  \\___/|____/ \n");
+    print_s("              |___/ |___/                        \n");
+
+    set_print_color(PRINT_COLOR_WHITE, PRINT_COLOR_BLACK);
+
+    char vendor_str[13];
+    CPUID_vendor_string(vendor_str);
+    print_s("Detected CPU: ");
+    print_s(vendor_str);
+
+    print_s("\n>");
 
     int max_len = 50;
     char str[max_len];
 
-    if (input_str(str, max_len))
+    while (1)
     {
-        print_s("\nYour name is: ");
-        print_s(str);
+        if (input_str(str, max_len))
+        {
+            if (ic_strcmp(str, "clear") == 0)
+            {
+                clr_scr();
+                print_s(">");
+            }
+            else
+            {
+                set_print_color(PRINT_COLOR_RED, PRINT_COLOR_BLACK);
+                print_s("\nerror not valid command: ");
+                print_s(str);
+                set_print_color(PRINT_COLOR_WHITE, PRINT_COLOR_BLACK);
+                print_s("\n>");
+            }
+        }
+        sleep(500000);
     }
-}
+}   

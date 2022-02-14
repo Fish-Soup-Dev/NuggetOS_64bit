@@ -32,4 +32,5 @@ void clr_row(uint16 row);
 void print_c(uint8 chr);
 void print_i(int32 num);
 void print_s(uint8* str);
+void print_nl();
 void set_print_color(uint8 f, uint8 b);

@@ -94,3 +94,55 @@ uint8* itoa(int32 value, uint8* buffer, uint16 base)
     // reverse the string and return it
     return reverse(buffer, 0, i - 1);
 }
+
+int32 atoi(uint8* str)
+{
+	int32 sign = 1, base = 0, i = 0;
+	
+	while (str[i] == ' ')
+	{
+		i++;
+	}
+
+	if (str[i] == '-' || str[i] == '+')
+	{
+		sign = 1 - 2 * (str[i++] == '-');
+	}
+
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		if (base > 2147483647 / 10 || (base == 2147483647 / 10 && str[i] - '0' > 7))
+		{
+			if (sign == 1)
+				return 2147483647;
+			else
+				return -2147483648;
+		}
+		base = 10 * base + (str[i++] - '0');
+	}
+	return base * sign;
+}
+
+int16 ic_strcmp(uint8* s1, uint8* s2)
+{
+    int16 i;
+    for (i = 0; s1[i] && s2[i]; ++i)
+    {
+        /* If characters are same or inverting the
+           6th bit makes them same */
+        if (s1[i] == s2[i] || (s1[i] ^ 32) == s2[i])
+           continue;
+        else
+           break;
+    }
+ 
+    /* Compare the last (or first mismatching in
+       case of not same) characters */
+    if (s1[i] == s2[i])
+        return 0;
+ 
+    // Set the 6th bit in both, then compare
+    if ((s1[i] | 32) < (s2[i] | 32))
+        return -1;
+    return 1;
+}
