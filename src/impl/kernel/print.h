@@ -1,8 +1,5 @@
 #pragma once
-
-#include "types.h"
-#include "cursor.h"
-#include "utils.h"
+#include "nugget.h"
 
 #define NUM_COLS 80
 #define NUM_ROWS 25
@@ -34,3 +31,9 @@ void print_i(int32 num);
 void print_s(uint8* str);
 void print_nl();
 void set_print_color(uint8 f, uint8 b);
+
+void pprint_char(uint8 column, uint8 row, uint8 character, uint8 color, uint8 bg_color);
+void pprint_str(uint8 column, uint8 row, uint8* str, uint8 color, uint8 bg_color);
+void pprint_int(uint8 column, uint8 row, int32 num, uint8 color, uint8 bg_color);
+void pprint_int_pad(uint8 column, uint8 row, int32 num, uint8 pad, uint8 color, uint8 bg_color);
+void pprint_int_pad0(uint8 column, uint8 row, int32 num, uint8 pad, uint8 color, uint8 bg_color);

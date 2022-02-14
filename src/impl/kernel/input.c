@@ -6,6 +6,8 @@ uint8 get_input_keycode()
     while (!code)
     {
         sleep(10000);
+        show_date_time();
+        
         code = inb(KEYBOARD_PORT);
     }
     
